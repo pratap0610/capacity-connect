@@ -1,0 +1,6 @@
+import { useEffect,useState } from 'react';
+import PageHeader from '../components/PageHeader';
+import ApiStatus from '../components/ApiStatus';
+import { ErrorState,LoadingState,EmptyState } from '../components/LoadingState';
+import { getTraineeNotifications } from '../services/traineeService';
+export default function Notifications(){const [r,setR]=useState(null),[error,setError]=useState('');const load=async()=>{try{setR(await getTraineeNotifications())}catch(e){setError(e.message)}};useEffect(()=>{load()},[]);if(error)return <ErrorState message={error} onRetry={load}/>;if(!r)return <LoadingState message="Loading notifications…"/>;return <div className="mx-auto max-w-5xl"><PageHeader eyebrow="Notifications" title="Your notifications" description="Announcements and updates returned by the configured data source."/><ApiStatus source={r.source} message={r.message}/><div className="space-y-4">{r.data.map(a=><article className="card p-5" key={a.id}><div className="text-xs font-bold text-brand">{a.type} • {a.date}</div><h2 className="mt-1 font-black">{a.title}</h2><p className="mt-2 text-sm leading-6 text-slate-500">{a.description}</p></article>)}{!r.data.length&&<EmptyState message="No notifications are available."/>}</div></div>}

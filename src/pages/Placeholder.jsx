@@ -1,0 +1,2 @@
+import { Construction } from 'lucide-react';
+export default function Placeholder({title,description='This module is scaffolded in Phase 1 and will be connected during the next implementation phase.'}){return <div className="mx-auto max-w-4xl"><div className="card p-10 text-center"><div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-blue-50 text-brand"><Construction/></div><h1 className="mt-5 text-2xl font-black text-navy">{title}</h1><p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">{description}</p></div></div>}

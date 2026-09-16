@@ -1,0 +1,2 @@
+import { Network } from 'lucide-react';
+export default function Logo(){return <div className="flex items-center gap-3"><div className="grid h-10 w-10 place-items-center rounded-xl bg-navy text-white"><Network size={20}/></div><div><div className="text-sm font-extrabold tracking-[0.12em] text-navy">CAPACITY</div><div className="text-xs font-semibold tracking-[0.28em] text-brand">CONNECT</div></div></div>}
